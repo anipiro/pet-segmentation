@@ -1,0 +1,3 @@
+# Ablation: plain cross-entropy instead of CE + Dice
+model: lraspp_mbv3
+loss: ce

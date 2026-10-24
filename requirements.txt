@@ -1,0 +1,23 @@
+# Training / evaluation. For CPU-only installs use:
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+torch==2.14.1
+torchvision==0.29.1
+numpy==2.4.6
+pillow==12.3.0
+pandas==3.1.0
+matplotlib==3.11.2
+PyYAML==6.0.3
+tabulate==0.10.0
+truststore==0.10.5
+
+# Export / optimisation
+onnx==1.23.2
+onnxscript==0.7.2
+onnxruntime==1.31.0
+
+# Serving
+-r requirements-serve.txt
+
+# Tests
+pytest==9.1.1
+httpx==0.28.1

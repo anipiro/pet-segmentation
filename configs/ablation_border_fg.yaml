@@ -1,0 +1,3 @@
+# Ablation: train with trimap border labelled as foreground
+model: lraspp_mbv3
+border: foreground

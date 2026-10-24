@@ -1,0 +1,7 @@
+# Minimal runtime for the API (no PyTorch needed when serving an ONNX model)
+onnxruntime==1.31.0
+numpy==2.4.6
+pillow==12.3.0
+fastapi==0.162.0
+uvicorn[standard]==0.54.0
+python-multipart==0.0.32

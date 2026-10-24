@@ -1,0 +1,3 @@
+# Ablation: no data augmentation
+model: lraspp_mbv3
+augment: none

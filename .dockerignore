@@ -1,0 +1,8 @@
+.venv
+data
+runs
+logs
+results
+notebooks
+tests
+**/__pycache__

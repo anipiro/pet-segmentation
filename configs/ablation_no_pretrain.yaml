@@ -1,0 +1,3 @@
+# Ablation: same architecture, randomly initialised backbone (no ImageNet weights)
+model: lraspp_mbv3
+pretrained: false

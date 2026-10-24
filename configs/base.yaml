@@ -1,0 +1,15 @@
+# Defaults shared by every experiment; each configs/<name>.yaml overrides a few keys.
+model: lraspp_mbv3
+pretrained: true
+size: 160            # training / validation resolution (square); 160 keeps CPU training feasible
+epochs: 10
+batch_size: 16
+lr: 0.001
+weight_decay: 0.0001
+loss: ce_dice        # ce | ce_dice
+augment: standard    # standard | none
+border: ignore       # ignore | foreground  (how trimap border pixels are labelled for training)
+num_workers: 4
+threads: 8           # CPU threads for torch when no GPU
+seed: 42
+limit: null          # cap images per split, for smoke tests
