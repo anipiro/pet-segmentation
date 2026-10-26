@@ -1,0 +1,40 @@
+{
+  "name": "opt_resolution_128px",
+  "model_path": "C:\\Users\\User\\projects\\pet-segmentation\\models\\study\\final_128_fp32.onnx",
+  "split": "test",
+  "n_images": 3669,
+  "input_size": 128,
+  "fg_iou": 0.8697472416269995,
+  "bg_iou": 0.9021839075658568,
+  "miou": 0.8859655745964281,
+  "dice": 0.9303367024840971,
+  "pixel_acc": 0.9408306686330096,
+  "mean_image_iou": 0.8472381602248825,
+  "median_image_iou": 0.8789277324858367,
+  "images_iou_below_0.5": 83,
+  "latency_ms_mean": 3.2880479532265254,
+  "by_species": {
+    "cat": 0.8652403814800402,
+    "dog": 0.8721799113847457
+  },
+  "by_size": {
+    "tiny (<15%)": 0.6523149728126236,
+    "small (15-35%)": 0.8038181127001739,
+    "medium (35-60%)": 0.8736689808844855,
+    "large (>60%)": 0.9233371692451545
+  },
+  "worst_breeds": {
+    "Bengal": 0.7513880500629054,
+    "miniature_pinscher": 0.7735242503475134,
+    "wheaten_terrier": 0.7979608544457077,
+    "american_pit_bull_terrier": 0.8046967575811073,
+    "Sphynx": 0.807094289250159
+  },
+  "best_breeds": {
+    "British_Shorthair": 0.8920918290697825,
+    "newfoundland": 0.8930448320099278,
+    "Ragdoll": 0.8934532954223953,
+    "keeshond": 0.89503565718838,
+    "havanese": 0.90525389043371
+  }
+}

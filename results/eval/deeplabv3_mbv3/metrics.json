@@ -1,0 +1,40 @@
+{
+  "name": "deeplabv3_mbv3",
+  "model_path": "runs/deeplabv3_mbv3/best.pt",
+  "split": "test",
+  "n_images": 3669,
+  "input_size": 160,
+  "fg_iou": 0.8190209957911074,
+  "bg_iou": 0.8775133414229606,
+  "miou": 0.848267168607034,
+  "dice": 0.9005074682328319,
+  "pixel_acc": 0.9211956653313473,
+  "mean_image_iou": 0.7972458459746324,
+  "median_image_iou": 0.8125072487300224,
+  "images_iou_below_0.5": 54,
+  "latency_ms_mean": 27.928102483868884,
+  "by_species": {
+    "cat": 0.8168880385496341,
+    "dog": 0.8201597824483721
+  },
+  "by_size": {
+    "tiny (<15%)": 0.6381579740686999,
+    "small (15-35%)": 0.7578864557450125,
+    "medium (35-60%)": 0.8157889568244072,
+    "large (>60%)": 0.8732473896298272
+  },
+  "worst_breeds": {
+    "Bengal": 0.7365282660454261,
+    "miniature_pinscher": 0.7388560144000819,
+    "chihuahua": 0.7546452880949558,
+    "Egyptian_Mau": 0.7628579758301202,
+    "Abyssinian": 0.7632385523729681
+  },
+  "best_breeds": {
+    "Birman": 0.8254849787473441,
+    "Ragdoll": 0.8292389379622993,
+    "keeshond": 0.8306818362886205,
+    "samoyed": 0.8374503671746024,
+    "British_Shorthair": 0.8455345886994168
+  }
+}

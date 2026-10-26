@@ -1,0 +1,33 @@
+{
+  "name": "unet_scratch",
+  "model": "unet_scratch",
+  "params": 1942594,
+  "best_val": {
+    "fg_iou": 0.7648605236909451,
+    "bg_iou": 0.841480142058468,
+    "miou": 0.8031703328747066,
+    "dice": 0.8667659720682656,
+    "pixel_acc": 0.8954101033197832,
+    "epoch": 10
+  },
+  "config": {
+    "model": "unet_scratch",
+    "pretrained": true,
+    "size": 160,
+    "epochs": 10,
+    "batch_size": 16,
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "loss": "ce_dice",
+    "augment": "standard",
+    "border": "ignore",
+    "num_workers": 2,
+    "threads": 8,
+    "seed": 42,
+    "limit": null,
+    "train_fraction": 1.0,
+    "name": "unet_scratch"
+  },
+  "train_minutes": 34.142016617457074,
+  "device": "cpu"
+}

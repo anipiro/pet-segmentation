@@ -1,0 +1,40 @@
+{
+  "name": "opt_resolution_224px",
+  "model_path": "C:\\Users\\User\\projects\\pet-segmentation\\models\\study\\final_224_fp32.onnx",
+  "split": "test",
+  "n_images": 3669,
+  "input_size": 224,
+  "fg_iou": 0.9015704170013671,
+  "bg_iou": 0.9268465036271282,
+  "miou": 0.9142084603142476,
+  "dice": 0.9482377396500262,
+  "pixel_acc": 0.9561968988747901,
+  "mean_image_iou": 0.8919622205257394,
+  "median_image_iou": 0.9116467327887982,
+  "images_iou_below_0.5": 26,
+  "latency_ms_mean": 6.5315088427209504,
+  "by_species": {
+    "cat": 0.8975154200437923,
+    "dog": 0.9037478479447557
+  },
+  "by_size": {
+    "tiny (<15%)": 0.7760510865513026,
+    "small (15-35%)": 0.8697580517791286,
+    "medium (35-60%)": 0.9057931163412563,
+    "large (>60%)": 0.9353454942750077
+  },
+  "worst_breeds": {
+    "chihuahua": 0.8526707722762468,
+    "Bengal": 0.8593200186042673,
+    "Sphynx": 0.8604372646081453,
+    "miniature_pinscher": 0.8642333541492445,
+    "Abyssinian": 0.8678914950361385
+  },
+  "best_breeds": {
+    "keeshond": 0.9121529938336495,
+    "scottish_terrier": 0.9126834063841079,
+    "leonberger": 0.9143881106724941,
+    "samoyed": 0.9218838053235519,
+    "British_Shorthair": 0.9224699435490628
+  }
+}

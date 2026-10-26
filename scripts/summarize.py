@@ -25,7 +25,7 @@ def main():
         c = s["config"]
         rows.append({
             "experiment": name, "model": s["model"], "params_M": round(s["params"] / 1e6, 2),
-            "pretrained": c["pretrained"], "loss": c["loss"], "augment": c["augment"],
+            "pretrained": c["pretrained"] and s["model"] != "unet_scratch", "loss": c["loss"], "augment": c["augment"],
             "border": c["border"], "best_epoch": s["best_val"]["epoch"],
             "val_fg_iou": round(s["best_val"]["fg_iou"], 4), "val_miou": round(s["best_val"]["miou"], 4),
             "val_dice": round(s["best_val"]["dice"], 4), "train_min": round(s["train_minutes"], 1),

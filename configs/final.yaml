@@ -1,0 +1,4 @@
+# Deployed model: best architecture (LR-ASPP) + the one ablation that clearly
+# helped (border labelled as foreground), trained on the full training set.
+model: lraspp_mbv3
+border: foreground

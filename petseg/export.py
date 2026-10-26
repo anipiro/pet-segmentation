@@ -1,12 +1,12 @@
 """Export a trained checkpoint to ONNX and quantise it to INT8.
 
-    python -m petseg.export runs/lraspp_mbv3/best.pt --out models/petseg --size 224 \
-        --calib minmax percentile
+    python -m petseg.export runs/final/best.pt --out models/petseg --size 224 --calib percentile
 
-Produces:
-  <out>_fp32.onnx               graph exported from PyTorch (static 1x3xSxS input)
-  <out>_int8_<calib>.onnx       post-training static quantisation (QDQ, per-channel
-                                weights), activations calibrated on training images
+Produces (this exact command rebuilds the two models shipped in models/):
+  <out>.onnx                    graph exported from PyTorch (static 1x3xSxS input)
+  <out>_int8.onnx               post-training static quantisation (QDQ, per-channel
+                                weights), activations calibrated on training images;
+                                named <out>_int8_<calib>.onnx when several --calib are given
 
 Why static rather than dynamic quantisation: dynamic quantisation only
 quantises weights of MatMul/Gemm-style ops and computes activation ranges at
@@ -93,11 +93,13 @@ def main():
 
     out = Path(args.out)
     out.parent.mkdir(parents=True, exist_ok=True)
-    fp32 = out.with_name(f"{out.name}_fp32.onnx")
+    fp32 = out.with_name(f"{out.name}.onnx")
     export_onnx(args.checkpoint, fp32, args.size)
     print(f"  fp32 -> {fp32} ({fp32.stat().st_size / 1e6:.2f} MB)")
     for c in args.calib:
-        quantize(fp32, out.with_name(f"{out.name}_int8_{c}.onnx"), args.size, c, args.n_calib)
+        # one calibration -> <out>_int8.onnx (what the app loads); several -> suffixed
+        suffix = "_int8" if len(args.calib) == 1 else f"_int8_{c}"
+        quantize(fp32, out.with_name(f"{out.name}{suffix}.onnx"), args.size, c, args.n_calib)
 
 
 if __name__ == "__main__":

@@ -1,0 +1,33 @@
+{
+  "name": "ablation_border_fg",
+  "model": "lraspp_mbv3",
+  "params": 3218308,
+  "best_val": {
+    "fg_iou": 0.8715860994850005,
+    "bg_iou": 0.9049377435240795,
+    "miou": 0.88826192150454,
+    "dice": 0.9313876606850549,
+    "pixel_acc": 0.9422190464092141,
+    "epoch": 6
+  },
+  "config": {
+    "model": "lraspp_mbv3",
+    "pretrained": true,
+    "size": 160,
+    "epochs": 6,
+    "batch_size": 16,
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "loss": "ce_dice",
+    "augment": "standard",
+    "border": "foreground",
+    "num_workers": 2,
+    "threads": 8,
+    "seed": 42,
+    "limit": null,
+    "train_fraction": 0.5,
+    "name": "ablation_border_fg"
+  },
+  "train_minutes": 9.24159096479416,
+  "device": "cpu"
+}

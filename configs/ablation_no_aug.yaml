@@ -1,3 +1,5 @@
 # Ablation: no data augmentation
 model: lraspp_mbv3
 augment: none
+epochs: 6
+train_fraction: 0.5

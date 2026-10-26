@@ -1,0 +1,40 @@
+{
+  "name": "opt_architecture_deeplabv3_mbv3",
+  "model_path": "C:\\Users\\User\\projects\\pet-segmentation\\models\\study\\deeplabv3_mbv3_160_fp32.onnx",
+  "split": "test",
+  "n_images": 3669,
+  "input_size": 160,
+  "fg_iou": 0.8190210353115035,
+  "bg_iou": 0.8775133681386499,
+  "miou": 0.8482672017250767,
+  "dice": 0.9005074921206152,
+  "pixel_acc": 0.9211956838828256,
+  "mean_image_iou": 0.7972458900183163,
+  "median_image_iou": 0.8125072487300224,
+  "images_iou_below_0.5": 54,
+  "latency_ms_mean": 6.829146260891491,
+  "by_species": {
+    "cat": 0.8168880385496341,
+    "dog": 0.8201598430984911
+  },
+  "by_size": {
+    "tiny (<15%)": 0.6381584243350191,
+    "small (15-35%)": 0.7578864652880742,
+    "medium (35-60%)": 0.8157889755916748,
+    "large (>60%)": 0.8732474224649855
+  },
+  "worst_breeds": {
+    "Bengal": 0.7365282660454261,
+    "miniature_pinscher": 0.7388560144000819,
+    "chihuahua": 0.7546452880949558,
+    "Egyptian_Mau": 0.7628579758301202,
+    "Abyssinian": 0.7632385523729681
+  },
+  "best_breeds": {
+    "Birman": 0.825485480378834,
+    "Ragdoll": 0.8292389379622993,
+    "keeshond": 0.8306818362886205,
+    "samoyed": 0.837450626268809,
+    "British_Shorthair": 0.8455345886994168
+  }
+}

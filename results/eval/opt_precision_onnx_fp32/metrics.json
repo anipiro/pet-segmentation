@@ -1,0 +1,40 @@
+{
+  "name": "opt_precision_onnx_fp32",
+  "model_path": "C:\\Users\\User\\projects\\pet-segmentation\\models\\study\\final_160_fp32.onnx",
+  "split": "test",
+  "n_images": 3669,
+  "input_size": 160,
+  "fg_iou": 0.8933144564095593,
+  "bg_iou": 0.9195506375640012,
+  "miou": 0.9064325469867802,
+  "dice": 0.9436514398180021,
+  "pixel_acc": 0.9519312127808881,
+  "mean_image_iou": 0.8789616632822111,
+  "median_image_iou": 0.9012663237039968,
+  "images_iou_below_0.5": 29,
+  "latency_ms_mean": 4.198541539415792,
+  "by_species": {
+    "cat": 0.8879814951222639,
+    "dog": 0.8961783496567733
+  },
+  "by_size": {
+    "tiny (<15%)": 0.7276537152376475,
+    "small (15-35%)": 0.8497792834118211,
+    "medium (35-60%)": 0.8975416171420262,
+    "large (>60%)": 0.9347078348462406
+  },
+  "worst_breeds": {
+    "Bengal": 0.8184857135789856,
+    "miniature_pinscher": 0.8301668236689107,
+    "chihuahua": 0.8445598423249591,
+    "Sphynx": 0.8482533188610997,
+    "wheaten_terrier": 0.8505822707526791
+  },
+  "best_breeds": {
+    "leonberger": 0.9081188369826994,
+    "keeshond": 0.9083177833625057,
+    "British_Shorthair": 0.9091991050069491,
+    "samoyed": 0.9132006130149183,
+    "havanese": 0.9149665004674721
+  }
+}

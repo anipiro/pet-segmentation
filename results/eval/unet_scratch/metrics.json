@@ -1,0 +1,40 @@
+{
+  "name": "unet_scratch",
+  "model_path": "runs/unet_scratch/best.pt",
+  "split": "test",
+  "n_images": 3669,
+  "input_size": 160,
+  "fg_iou": 0.7642983346207064,
+  "bg_iou": 0.835947978301232,
+  "miou": 0.8001231564609692,
+  "dice": 0.8664048699961135,
+  "pixel_acc": 0.8929138848060281,
+  "mean_image_iou": 0.7436868685324755,
+  "median_image_iou": 0.7745404816540342,
+  "images_iou_below_0.5": 218,
+  "latency_ms_mean": 19.4932201419836,
+  "by_species": {
+    "cat": 0.7582050115339841,
+    "dog": 0.7675682235064855
+  },
+  "by_size": {
+    "tiny (<15%)": 0.5496697226287814,
+    "small (15-35%)": 0.6981486017457652,
+    "medium (35-60%)": 0.7650365311031816,
+    "large (>60%)": 0.8350552029364267
+  },
+  "worst_breeds": {
+    "miniature_pinscher": 0.597401050337887,
+    "german_shorthaired": 0.6418503528245426,
+    "Sphynx": 0.6688683618147115,
+    "Egyptian_Mau": 0.6700132980674632,
+    "chihuahua": 0.6764363511140766
+  },
+  "best_breeds": {
+    "keeshond": 0.8025664944752794,
+    "pomeranian": 0.8083695096115185,
+    "newfoundland": 0.8115161999099166,
+    "havanese": 0.8144529532867207,
+    "samoyed": 0.8315324905911708
+  }
+}

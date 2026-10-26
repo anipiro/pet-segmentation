@@ -1,0 +1,40 @@
+{
+  "name": "lraspp_mbv3",
+  "model_path": "runs/lraspp_mbv3/best.pt",
+  "split": "test",
+  "n_images": 3669,
+  "input_size": 160,
+  "fg_iou": 0.8285013078227137,
+  "bg_iou": 0.8816376415795725,
+  "miou": 0.8550694747011431,
+  "dice": 0.9062080560491924,
+  "pixel_acc": 0.9246964146125676,
+  "mean_image_iou": 0.8086296983437894,
+  "median_image_iou": 0.8256278880455862,
+  "images_iou_below_0.5": 55,
+  "latency_ms_mean": 16.703024344813887,
+  "by_species": {
+    "cat": 0.8258648574102108,
+    "dog": 0.8299099405205504
+  },
+  "by_size": {
+    "tiny (<15%)": 0.6566238526447273,
+    "small (15-35%)": 0.7692918082815355,
+    "medium (35-60%)": 0.8268080611792755,
+    "large (>60%)": 0.883176353663634
+  },
+  "worst_breeds": {
+    "miniature_pinscher": 0.7447791842491824,
+    "Bengal": 0.7535318310578635,
+    "chihuahua": 0.7712589303468824,
+    "Sphynx": 0.7795918664577165,
+    "german_shorthaired": 0.7818794424911236
+  },
+  "best_breeds": {
+    "pug": 0.8377393242586963,
+    "keeshond": 0.8386639277248941,
+    "Ragdoll": 0.8454542932642276,
+    "samoyed": 0.8464145185991373,
+    "British_Shorthair": 0.8480474152249823
+  }
+}

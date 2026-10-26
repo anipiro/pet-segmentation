@@ -1,7 +1,7 @@
 """Inference on arbitrary images, with either a PyTorch checkpoint or an ONNX model.
 
     from petseg.inference import Predictor
-    p = Predictor("models/petseg_int8.onnx")
+    p = Predictor("models/petseg.onnx")   # or models/petseg_int8.onnx, runs/<name>/best.pt
     result = p.predict(Image.open("cat.jpg"))
     result.cutout().save("cat_cutout.png")
 

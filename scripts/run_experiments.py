@@ -14,8 +14,10 @@ ROOT = Path(__file__).resolve().parent.parent
 ORDER = [
     # architecture comparison
     "lraspp_mbv3", "deeplabv3_mbv3", "unet_resnet18", "unet_scratch",
-    # ablations on the LR-ASPP baseline (one change each)
-    "ablation_no_pretrain", "ablation_loss_ce", "ablation_no_aug", "ablation_border_fg",
+    # ablations: LR-ASPP, 50% of train images, 6 epochs; one change each vs ablation_baseline
+    "ablation_baseline", "ablation_no_pretrain", "ablation_loss_ce", "ablation_no_aug", "ablation_border_fg",
+    # deployed model: lraspp_mbv3 + border=foreground on the full training set
+    "final",
 ]
 
 

@@ -1,0 +1,40 @@
+{
+  "name": "opt_architecture_lraspp_mbv3",
+  "model_path": "C:\\Users\\User\\projects\\pet-segmentation\\models\\study\\lraspp_mbv3_160_fp32.onnx",
+  "split": "test",
+  "n_images": 3669,
+  "input_size": 160,
+  "fg_iou": 0.8285012909228318,
+  "bg_iou": 0.8816376312964126,
+  "miou": 0.8550694611096221,
+  "dice": 0.906208045939845,
+  "pixel_acc": 0.9246964071919762,
+  "mean_image_iou": 0.8086296872011592,
+  "median_image_iou": 0.8256278880455862,
+  "images_iou_below_0.5": 55,
+  "latency_ms_mean": 4.172531249884332,
+  "by_species": {
+    "cat": 0.8258648173307085,
+    "dog": 0.8299099361102269
+  },
+  "by_size": {
+    "tiny (<15%)": 0.6566241303225974,
+    "small (15-35%)": 0.7692917351194782,
+    "medium (35-60%)": 0.8268080786198269,
+    "large (>60%)": 0.8831762908074978
+  },
+  "worst_breeds": {
+    "miniature_pinscher": 0.7447789012232061,
+    "Bengal": 0.7535318310578635,
+    "chihuahua": 0.7712589303468824,
+    "Sphynx": 0.779592166857248,
+    "german_shorthaired": 0.7818792900986109
+  },
+  "best_breeds": {
+    "pug": 0.8377388156375681,
+    "keeshond": 0.8386639277248941,
+    "Ragdoll": 0.8454540999303787,
+    "samoyed": 0.8464145185991373,
+    "British_Shorthair": 0.8480471561299836
+  }
+}

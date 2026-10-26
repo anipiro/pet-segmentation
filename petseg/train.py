@@ -12,7 +12,7 @@ import time
 from pathlib import Path
 
 import torch
-from torch.utils.data import DataLoader
+from torch.utils.data import DataLoader, Subset
 
 from .data import PetSegDataset
 from .losses import SegLoss
@@ -53,6 +53,12 @@ def train(cfg: dict) -> dict:
     train_ds = PetSegDataset("train", cfg["size"], train=True, augment=cfg["augment"],
                              border=cfg["border"], limit=cfg.get("limit"))
     val_ds = PetSegDataset("val", cfg["size"], border="foreground", limit=cfg.get("limit"))
+    if cfg.get("train_fraction", 1.0) < 1.0:
+        # Random (not alphabetical, which would drop whole breeds) subset of the
+        # training images; used by the cheaper ablation protocol. Validation stays full.
+        g = torch.Generator().manual_seed(cfg["seed"])
+        n = int(len(train_ds) * cfg["train_fraction"])
+        train_ds = Subset(train_ds, torch.randperm(len(train_ds), generator=g)[:n].tolist())
     loader_kw = dict(num_workers=cfg["num_workers"], persistent_workers=cfg["num_workers"] > 0,
                      pin_memory=device.type == "cuda")
     train_dl = DataLoader(train_ds, cfg["batch_size"], shuffle=True, drop_last=True, **loader_kw)

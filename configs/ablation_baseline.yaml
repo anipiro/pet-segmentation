@@ -1,0 +1,5 @@
+# Ablation protocol (cheaper, so 5 runs fit the CPU budget): 50% of the
+# training images, 6 epochs. This is the reference run the ablations compare to.
+model: lraspp_mbv3
+epochs: 6
+train_fraction: 0.5

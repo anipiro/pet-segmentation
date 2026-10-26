@@ -41,13 +41,32 @@ def measure(study, label, path, threads, limit):
             "test_dice": round(m["dice"], 4)}
 
 
+def plot(df, threads):
+    fig, ax = plt.subplots(figsize=(7, 4.5))
+    for study, marker in (("precision", "o"), ("resolution", "s"), ("architecture", "^")):
+        d = df[df["study"] == study]
+        ax.scatter(d["latency_ms"], d["test_fg_iou"], marker=marker, label=study, s=50)
+        for _, r in d.iterrows():
+            ax.annotate(r["variant"], (r["latency_ms"], r["test_fg_iou"]), fontsize=7,
+                        xytext=(4, 3), textcoords="offset points")
+    ax.set(xscale="log", xlabel=f"latency per image, ms (CPU, {threads} threads, log scale)",
+           ylabel="test foreground IoU", title="Accuracy vs speed")
+    ax.grid(alpha=0.3)
+    ax.legend()
+    fig.tight_layout()
+    fig.savefig(ROOT / "results" / "figures" / "speed_vs_iou.png", dpi=110)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--deploy", default="lraspp_mbv3", help="run name of the model to deploy")
     ap.add_argument("--train-size", type=int, default=160)
     ap.add_argument("--threads", type=int, default=4)
     ap.add_argument("--limit", type=int, help="evaluate on the first N test images only")
+    ap.add_argument("--plot-only", action="store_true", help="redraw the figure from results/optimization.csv")
     args = ap.parse_args()
+    if args.plot_only:
+        return plot(pd.read_csv(ROOT / "results" / "optimization.csv"), args.threads)
 
     work = ROOT / "models" / "study"
     work.mkdir(parents=True, exist_ok=True)
@@ -71,6 +90,11 @@ def main():
         if not path.exists():
             export_onnx(ckpt, path, size)
         rows.append(measure("resolution", f"{size}px", path, args.threads, args.limit))
+    # INT8 at the best resolution (224 px): at 160 px quantisation overhead
+    # cancelled the speed-up, so check whether larger inputs change that
+    int8_224 = work / f"{args.deploy}_224_int8_percentile.onnx"
+    quantize(work / f"{args.deploy}_224_fp32.onnx", int8_224, 224, "percentile", n_calib=128)
+    rows.append(measure("resolution", "224px_int8_percentile", int8_224, args.threads, args.limit))
 
     # 3. architecture
     for arch in ARCHS:
@@ -87,19 +111,7 @@ def main():
     (out / "optimization.md").write_text(df.to_markdown(index=False))
     print(df.to_string(index=False))
 
-    fig, ax = plt.subplots(figsize=(7, 4.5))
-    for study, marker in (("precision", "o"), ("resolution", "s"), ("architecture", "^")):
-        d = df[df["study"] == study]
-        ax.scatter(d["latency_ms"], d["test_fg_iou"], marker=marker, label=study, s=50)
-        for _, r in d.iterrows():
-            ax.annotate(r["variant"], (r["latency_ms"], r["test_fg_iou"]), fontsize=7,
-                        xytext=(4, 3), textcoords="offset points")
-    ax.set(xscale="log", xlabel=f"latency per image, ms (CPU, {args.threads} threads, log scale)",
-           ylabel="test foreground IoU", title="Accuracy vs speed")
-    ax.grid(alpha=0.3)
-    ax.legend()
-    fig.tight_layout()
-    fig.savefig(out / "figures" / "speed_vs_iou.png", dpi=110)
+    plot(df, args.threads)
 
 
 if __name__ == "__main__":

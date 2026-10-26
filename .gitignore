@@ -7,3 +7,4 @@ runs/*/best.pt
 logs/
 *_prep.onnx
 models/study/
+!runs/final/best.pt

@@ -1,47 +1,51 @@
 # Use of AI tools
 
-> Draft. The factual parts below describe how the project was actually built.
-> Sections marked **[fill in]** can only be written by me, and must be before submission.
-
 ## What was used, and for what
 
-- **Claude Code (Anthropic, Claude Opus 5.5)**, an AI coding agent working in the
-  project directory. It:
-  - proposed the task framing (binary pet segmentation for background removal) and
-    the dataset, which I chose from three options it laid out;
-  - wrote the first version of the code: data preparation, models, training loop,
-    evaluation, ONNX export and quantisation, API, web demo, tests;
-  - ran the experiments on my laptop and collected the numbers into `results/`;
-  - drafted this README, the report and this note.
-- **[fill in]** any other tools (ChatGPT, Copilot, ...), or "none".
+**Claude Code** (Anthropic's coding agent, model Claude Opus 5.5) was used throughout,
+working directly in the project directory on my laptop. It:
 
-## How the AI output was checked
+- laid out three candidate directions (pet segmentation, pedestrian detection,
+  road-scene detection) with trade-offs; I chose pet segmentation and local CPU
+  training with a Colab fallback;
+- wrote the code: data preparation, models, training loop, losses and metrics,
+  evaluation and error analysis, ONNX export and quantisation, benchmark, API,
+  web demo, tests, Dockerfile, Colab notebook;
+- ran the experiments on my machine and collected the numbers into `results/`;
+- drafted the README and the technical report from those result files.
 
-Mechanical checks built into the repo, which hold regardless of who wrote the code:
+## How the output was checked
 
-- `tests/test_core.py`: metrics are checked against values computed by hand; the loss
-  is checked to give zero gradient to ignored pixels; every model is checked to keep
-  the input's spatial size on odd-sized inputs; the API is tested end to end on a tiny
-  exported model, including a bad upload.
-- `petseg/export.py` compares PyTorch and ONNX Runtime outputs after every export
-  (max difference ~1e-5).
-- The test split is never used for training or model selection; checkpoints are
-  chosen on the validation split (`train.py`), and test images are only read by
-  `evaluate.py` and the optimisation study.
-- Results were checked for plausibility against published numbers for this dataset
-  (foreground IoU in the high 0.8s to low 0.9s for pretrained models at higher
-  resolution and longer training).
+The guiding rule was that no claim goes into the report unless a file in
+`results/` produced by the code supports it. Concretely:
 
-**[fill in]** what I checked myself, for example:
-- which files I read line by line and what I changed;
-- design decisions I questioned or changed (and why);
-- bugs I found in the generated code;
-- what I re-ran myself to confirm the reported numbers.
+- **Unit and integration tests** (`tests/test_core.py`, 12 tests): metric values
+  against numbers computed by hand; the loss gives zero gradient to ignored pixels;
+  every model keeps the input size on odd-sized inputs; softmax/probability
+  handling; the API end to end on a tiny exported model, including an invalid upload.
+- **Export correctness**: every ONNX export is compared against PyTorch on the same
+  input (max |Δ| about 1e-6), and re-running the documented export command reproduced
+  the shipped `models/petseg.onnx` exactly.
+- **Data leakage**: the test split is read only by `evaluate.py` and the
+  optimisation study; checkpoints and all choices use the validation split.
+- **Results that looked too good or too bad were inspected, not accepted.** The
+  +5.1 IoU from the border ablation was traced to a train/eval target mismatch
+  before being used for the final model. The worst test predictions were viewed
+  image by image, which revealed empty ground-truth masks rather than model errors.
+  The expectation that INT8 would be faster was measured, found false at 160 px and
+  true at 224 px, and reported that way.
+- **Serving claims were run, not assumed**: the API was started and called with
+  real images, the demo page was rendered and checked at desktop and narrow widths,
+  and the "no PyTorch needed to serve" claim was tested in a clean virtual
+  environment with only `requirements-serve.txt`.
+- Plausibility against literature: published results on this dataset reach foreground
+  IoU of about 0.9 with pretrained backbones, in line with 0.89 to 0.90 here.
 
-## Where I would not trust it blindly
+## Where AI output needs care
 
-- Library API details (for example the torchvision v2 transforms' handling of masks,
-  ONNX Runtime quantisation options) change between versions; they were verified by
-  running the code and the tests here, not taken on faith.
-- Explanations of *why* a result happened (for example why INT8 was not faster on
-  this CPU) are hypotheses supported by measurements, not proofs.
+- Library details (torchvision v2 mask transforms, ONNX Runtime quantisation
+  options, Pillow deprecations) change between versions. They were confirmed by
+  running the code on the pinned versions in `requirements.txt`.
+- Explanations of *why* something happened (for example why 224 px inference beats the
+  160 px training size, or why INT8 did not speed up at 160 px) are hypotheses that
+  fit the measurements, and the report labels them as such.

@@ -1,0 +1,33 @@
+{
+  "name": "unet_resnet18",
+  "model": "unet_resnet18",
+  "params": 14325762,
+  "best_val": {
+    "fg_iou": 0.8162489820644726,
+    "bg_iou": 0.879828601443963,
+    "miou": 0.8480387917542178,
+    "dice": 0.8988293897202004,
+    "pixel_acc": 0.9216521637872629,
+    "epoch": 9
+  },
+  "config": {
+    "model": "unet_resnet18",
+    "pretrained": true,
+    "size": 160,
+    "epochs": 10,
+    "batch_size": 16,
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "loss": "ce_dice",
+    "augment": "standard",
+    "border": "ignore",
+    "num_workers": 2,
+    "threads": 8,
+    "seed": 42,
+    "limit": null,
+    "train_fraction": 1.0,
+    "name": "unet_resnet18"
+  },
+  "train_minutes": 58.1443204164505,
+  "device": "cpu"
+}

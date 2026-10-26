@@ -28,7 +28,6 @@
   body {
     margin: 0; background: var(--paper); color: var(--ink);
     font: 400 16px/1.5 "Schibsted Grotesk", system-ui, sans-serif;
-    font-variant-numeric: tabular-nums;
   }
   .wrap { max-width: 1180px; margin: 0 auto; padding: 32px 24px 48px;
           display: grid; grid-template-columns: 340px 1fr; gap: 40px; }
@@ -53,7 +52,7 @@
   dl { margin: 28px 0 0; display: grid; grid-template-columns: 1fr auto; row-gap: 8px;
        border-top: 1px solid var(--line); padding-top: 16px; font-size: 15px; }
   dt { color: var(--muted); }
-  dd { margin: 0; font-weight: 500; text-align: right; }
+  dd { margin: 0; font-weight: 500; text-align: right; font-variant-numeric: tabular-nums; }
   .download {
     margin-top: 24px; display: inline-block; background: var(--ink); color: var(--paper);
     text-decoration: none; font-weight: 700; padding: 12px 18px; border-radius: 10px;
@@ -72,11 +71,13 @@
   .tabs button:focus-visible { outline: 3px solid var(--mark); outline-offset: 2px; }
   .stage {
     position: relative; border-radius: 18px; overflow: hidden; background: var(--surface);
-    aspect-ratio: 4 / 3; display: grid; place-items: center;
+    aspect-ratio: 4 / 3; display: grid; place-items: center; container-type: size;
   }
   .stage .empty { color: var(--muted); text-align: center; padding: 24px; }
-  .frame { position: relative; max-width: 100%; max-height: 100%; line-height: 0; }
-  .frame img { max-width: 100%; max-height: 100%; display: block; }
+  /* scale the photo up or down to fit the stage; --ratio = width / height, set from JS */
+  .frame { position: relative; line-height: 0; aspect-ratio: var(--ratio, 4 / 3);
+           width: min(100cqw, 100cqh * var(--ratio, 1.333)); }
+  .frame img { width: 100%; height: 100%; display: block; }
   .checker {
     background-color: var(--check-a);
     background-image: conic-gradient(var(--check-b) 25%, transparent 0 50%, var(--check-b) 0 75%, transparent 0);
@@ -95,7 +96,7 @@
   .busy .stage { opacity: .55; }
 
   @media (max-width: 860px) {
-    .wrap { grid-template-columns: 1fr; gap: 24px; padding: 20px 16px 32px; }
+    .wrap { grid-template-columns: minmax(0, 1fr); gap: 24px; padding: 20px 16px 32px; }
     h1 { font-size: 34px; }
     .lede { margin-bottom: 20px; }
   }
@@ -159,6 +160,12 @@ for (const name of SAMPLES) {
   $("thumbs").append(b);
 }
 
+// ?sample=<name> opens the page with that sample already processed (shareable link)
+const preset = new URLSearchParams(location.search).get("sample");
+if (preset && SAMPLES.includes(preset)) {
+  fetch(`/static/samples/${preset}.jpg`).then(r => r.blob()).then(run);
+}
+
 $("file").onchange = (e) => e.target.files[0] && run(e.target.files[0]);
 const drop = $("drop");
 drop.ondragover = (e) => { e.preventDefault(); drop.classList.add("over"); };
@@ -208,6 +215,7 @@ async function run(blob) {
 function render() {
   if (!result) return;
   const stage = $("stage");
+  stage.style.setProperty("--ratio", result.width / result.height);
   const png = (b64) => "data:image/png;base64," + b64;
   $("slider").hidden = view !== "compare";
   if (view === "compare") {

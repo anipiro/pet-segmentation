@@ -1,0 +1,12 @@
+| experiment           | model          |   params_M | pretrained   | loss    | augment   | border     |   best_epoch |   val_fg_iou |   val_miou |   val_dice |   train_min |
+|:---------------------|:---------------|-----------:|:-------------|:--------|:----------|:-----------|-------------:|-------------:|-----------:|-----------:|------------:|
+| lraspp_mbv3          | lraspp_mbv3    |       3.22 | True         | ce_dice | standard  | ignore     |            7 |       0.8353 |     0.8624 |     0.9103 |        49.4 |
+| deeplabv3_mbv3       | deeplabv3_mbv3 |      11.02 | True         | ce_dice | standard  | ignore     |            9 |       0.8304 |     0.8596 |     0.9073 |        41.5 |
+| unet_resnet18        | unet_resnet18  |      14.33 | True         | ce_dice | standard  | ignore     |            9 |       0.8162 |     0.848  |     0.8988 |        58.1 |
+| unet_scratch         | unet_scratch   |       1.94 | False        | ce_dice | standard  | ignore     |           10 |       0.7649 |     0.8032 |     0.8668 |        34.1 |
+| ablation_baseline    | lraspp_mbv3    |       3.22 | True         | ce_dice | standard  | ignore     |            6 |       0.8207 |     0.8515 |     0.9015 |         7.1 |
+| ablation_no_pretrain | lraspp_mbv3    |       3.22 | False        | ce_dice | standard  | ignore     |            6 |       0.6546 |     0.68   |     0.7912 |         6.5 |
+| ablation_loss_ce     | lraspp_mbv3    |       3.22 | True         | ce      | standard  | ignore     |            4 |       0.8176 |     0.8483 |     0.8997 |         7.4 |
+| ablation_no_aug      | lraspp_mbv3    |       3.22 | True         | ce_dice | none      | ignore     |            6 |       0.8201 |     0.8515 |     0.9011 |         9.3 |
+| ablation_border_fg   | lraspp_mbv3    |       3.22 | True         | ce_dice | standard  | foreground |            6 |       0.8716 |     0.8883 |     0.9314 |         9.2 |
+| final                | lraspp_mbv3    |       3.22 | True         | ce_dice | standard  | foreground |           10 |       0.8876 |     0.9028 |     0.9405 |        21.2 |

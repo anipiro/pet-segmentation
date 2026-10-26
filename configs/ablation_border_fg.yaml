@@ -1,3 +1,5 @@
 # Ablation: train with trimap border labelled as foreground
 model: lraspp_mbv3
 border: foreground
+epochs: 6
+train_fraction: 0.5

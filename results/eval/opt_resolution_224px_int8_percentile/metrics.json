@@ -1,0 +1,40 @@
+{
+  "name": "final_int8_224",
+  "model_path": "models\\petseg_int8.onnx",
+  "split": "test",
+  "n_images": 3669,
+  "input_size": 224,
+  "fg_iou": 0.885769046964171,
+  "bg_iou": 0.9159150557130473,
+  "miou": 0.9008420513386092,
+  "dice": 0.9394247385597271,
+  "pixel_acc": 0.9491014630471194,
+  "mean_image_iou": 0.8778957485372372,
+  "median_image_iou": 0.9008836221659018,
+  "images_iou_below_0.5": 35,
+  "latency_ms_mean": 7.0313430127951335,
+  "by_species": {
+    "cat": 0.8828606471318785,
+    "dog": 0.8873317832270851
+  },
+  "by_size": {
+    "tiny (<15%)": 0.7735502349604159,
+    "small (15-35%)": 0.8582265807388665,
+    "medium (35-60%)": 0.8916864225860832,
+    "large (>60%)": 0.9132625682312925
+  },
+  "worst_breeds": {
+    "japanese_chin": 0.8339385432347575,
+    "chihuahua": 0.8400636122159831,
+    "saint_bernard": 0.8411157805136604,
+    "american_bulldog": 0.8468542675062137,
+    "Bengal": 0.858377412561009
+  },
+  "best_breeds": {
+    "newfoundland": 0.9047132045435656,
+    "leonberger": 0.9067728287130119,
+    "scottish_terrier": 0.9072204499409593,
+    "samoyed": 0.9113200088342057,
+    "British_Shorthair": 0.917377424441785
+  }
+}

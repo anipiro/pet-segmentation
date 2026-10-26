@@ -1,0 +1,40 @@
+{
+  "name": "opt_architecture_unet_scratch",
+  "model_path": "C:\\Users\\User\\projects\\pet-segmentation\\models\\study\\unet_scratch_160_fp32.onnx",
+  "split": "test",
+  "n_images": 3669,
+  "input_size": 160,
+  "fg_iou": 0.7642983245293014,
+  "bg_iou": 0.8359479744821502,
+  "miou": 0.8001231495057257,
+  "dice": 0.8664048635121945,
+  "pixel_acc": 0.8929138810957323,
+  "mean_image_iou": 0.7436868455583707,
+  "median_image_iou": 0.7745404816540342,
+  "images_iou_below_0.5": 218,
+  "latency_ms_mean": 9.495071015304768,
+  "by_species": {
+    "cat": 0.7582049881493884,
+    "dog": 0.7675682205897022
+  },
+  "by_size": {
+    "tiny (<15%)": 0.5496697226287814,
+    "small (15-35%)": 0.6981485278755578,
+    "medium (35-60%)": 0.7650365254944517,
+    "large (>60%)": 0.835055220387318
+  },
+  "worst_breeds": {
+    "miniature_pinscher": 0.597401050337887,
+    "german_shorthaired": 0.6418503528245426,
+    "Sphynx": 0.6688678747226511,
+    "Egyptian_Mau": 0.6700132980674632,
+    "chihuahua": 0.6764363511140766
+  },
+  "best_breeds": {
+    "keeshond": 0.8025664944752794,
+    "pomeranian": 0.8083695096115185,
+    "newfoundland": 0.8115161999099166,
+    "havanese": 0.8144529532867207,
+    "samoyed": 0.8315322431743535
+  }
+}

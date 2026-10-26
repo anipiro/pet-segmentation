@@ -1,0 +1,33 @@
+{
+  "name": "ablation_no_aug",
+  "model": "lraspp_mbv3",
+  "params": 3218308,
+  "best_val": {
+    "fg_iou": 0.8200742743159815,
+    "bg_iou": 0.8829175926154421,
+    "miou": 0.8514959334657117,
+    "dice": 0.9011437454926733,
+    "pixel_acc": 0.9236573721205962,
+    "epoch": 6
+  },
+  "config": {
+    "model": "lraspp_mbv3",
+    "pretrained": true,
+    "size": 160,
+    "epochs": 6,
+    "batch_size": 16,
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "loss": "ce_dice",
+    "augment": "none",
+    "border": "ignore",
+    "num_workers": 2,
+    "threads": 8,
+    "seed": 42,
+    "limit": null,
+    "train_fraction": 0.5,
+    "name": "ablation_no_aug"
+  },
+  "train_minutes": 9.338020789623261,
+  "device": "cpu"
+}

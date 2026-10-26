@@ -1,0 +1,32 @@
+{
+  "name": "lraspp_mbv3",
+  "model": "lraspp_mbv3",
+  "params": 3218308,
+  "best_val": {
+    "fg_iou": 0.8353090780503709,
+    "bg_iou": 0.8895333549158612,
+    "miou": 0.862421216483116,
+    "dice": 0.910265293230839,
+    "pixel_acc": 0.9292009654471545,
+    "epoch": 7
+  },
+  "config": {
+    "model": "lraspp_mbv3",
+    "pretrained": true,
+    "size": 160,
+    "epochs": 10,
+    "batch_size": 16,
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "loss": "ce_dice",
+    "augment": "standard",
+    "border": "ignore",
+    "num_workers": 4,
+    "threads": 8,
+    "seed": 42,
+    "limit": null,
+    "name": "lraspp_mbv3"
+  },
+  "train_minutes": 49.385562709967296,
+  "device": "cpu"
+}

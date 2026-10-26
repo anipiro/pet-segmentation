@@ -1,0 +1,33 @@
+{
+  "name": "ablation_loss_ce",
+  "model": "lraspp_mbv3",
+  "params": 3218308,
+  "best_val": {
+    "fg_iou": 0.8176318733708632,
+    "bg_iou": 0.8789205149299402,
+    "miou": 0.8482761941504017,
+    "dice": 0.899667182722248,
+    "pixel_acc": 0.9215221671747967,
+    "epoch": 4
+  },
+  "config": {
+    "model": "lraspp_mbv3",
+    "pretrained": true,
+    "size": 160,
+    "epochs": 6,
+    "batch_size": 16,
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "loss": "ce",
+    "augment": "standard",
+    "border": "ignore",
+    "num_workers": 2,
+    "threads": 8,
+    "seed": 42,
+    "limit": null,
+    "train_fraction": 0.5,
+    "name": "ablation_loss_ce"
+  },
+  "train_minutes": 7.436145003636678,
+  "device": "cpu"
+}

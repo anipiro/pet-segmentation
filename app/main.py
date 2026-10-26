@@ -7,7 +7,8 @@ Endpoints
   POST /predict           multipart "file" -> JSON: stats + base64 PNGs (mask, overlay, cutout)
   POST /cutout            multipart "file" -> image/png with transparent background
 
-Model path comes from PETSEG_MODEL (default: the INT8 ONNX model in models/).
+Model path comes from PETSEG_MODEL (default: models/petseg.onnx, FP32 at 224 px;
+models/petseg_int8.onnx is the 3.5x smaller INT8 variant).
 """
 import base64
 import io
@@ -23,7 +24,7 @@ from PIL import Image, UnidentifiedImageError
 from petseg.inference import Predictor
 
 ROOT = Path(__file__).resolve().parent.parent
-MODEL_PATH = Path(os.environ.get("PETSEG_MODEL", ROOT / "models" / "petseg_int8.onnx"))
+MODEL_PATH = Path(os.environ.get("PETSEG_MODEL", ROOT / "models" / "petseg.onnx"))
 MAX_BYTES = 15 * 1024 * 1024
 MAX_SIDE = 2048  # larger uploads are downsized first; the network runs at a fixed size anyway
 

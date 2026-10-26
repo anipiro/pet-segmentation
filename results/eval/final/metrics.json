@@ -1,0 +1,40 @@
+{
+  "name": "final",
+  "model_path": "runs/final/best.pt",
+  "split": "test",
+  "n_images": 3669,
+  "input_size": 160,
+  "fg_iou": 0.8933144399400401,
+  "bg_iou": 0.9195506261438042,
+  "miou": 0.9064325330419222,
+  "dice": 0.943651430629062,
+  "pixel_acc": 0.9519312053602967,
+  "mean_image_iou": 0.8789616322055824,
+  "median_image_iou": 0.9012663237039968,
+  "images_iou_below_0.5": 29,
+  "latency_ms_mean": 17.475040365689104,
+  "by_species": {
+    "cat": 0.8879815213314378,
+    "dog": 0.8961783103717978
+  },
+  "by_size": {
+    "tiny (<15%)": 0.7276537152376475,
+    "small (15-35%)": 0.849779174073527,
+    "medium (35-60%)": 0.8975416181219248,
+    "large (>60%)": 0.9347078547732045
+  },
+  "worst_breeds": {
+    "Bengal": 0.8184861969559823,
+    "miniature_pinscher": 0.8301668236689107,
+    "chihuahua": 0.8445596095177699,
+    "Sphynx": 0.8482533188610997,
+    "wheaten_terrier": 0.8505822707526791
+  },
+  "best_breeds": {
+    "leonberger": 0.9081188369826994,
+    "keeshond": 0.9083177833625057,
+    "British_Shorthair": 0.9091991050069491,
+    "samoyed": 0.9132006130149183,
+    "havanese": 0.9149665004674721
+  }
+}

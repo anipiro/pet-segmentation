@@ -1,0 +1,40 @@
+{
+  "name": "opt_precision_onnx_int8_minmax",
+  "model_path": "C:\\Users\\User\\projects\\pet-segmentation\\models\\study\\final_160_int8_minmax.onnx",
+  "split": "test",
+  "n_images": 3669,
+  "input_size": 160,
+  "fg_iou": 0.8685900052174585,
+  "bg_iou": 0.9035973470059991,
+  "miou": 0.8860936761117288,
+  "dice": 0.9296742493454317,
+  "pixel_acc": 0.9411173446262959,
+  "mean_image_iou": 0.8540196832825578,
+  "median_image_iou": 0.8829665504670161,
+  "images_iou_below_0.5": 63,
+  "latency_ms_mean": 5.003225900676085,
+  "by_species": {
+    "cat": 0.864270957624244,
+    "dog": 0.8709129754675861
+  },
+  "by_size": {
+    "tiny (<15%)": 0.7063891527132112,
+    "small (15-35%)": 0.8256216601553288,
+    "medium (35-60%)": 0.8728414372679778,
+    "large (>60%)": 0.9066592893716127
+  },
+  "worst_breeds": {
+    "Bengal": 0.8011054812294889,
+    "japanese_chin": 0.8083906014128586,
+    "Sphynx": 0.8098130665364721,
+    "miniature_pinscher": 0.8115859068572273,
+    "american_bulldog": 0.8121212656880153
+  },
+  "best_breeds": {
+    "newfoundland": 0.8941118312660504,
+    "keeshond": 0.8949614274076078,
+    "samoyed": 0.8956785646370727,
+    "British_Shorthair": 0.8972514840332181,
+    "havanese": 0.8973911686635634
+  }
+}

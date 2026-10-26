@@ -1,0 +1,40 @@
+{
+  "name": "opt_architecture_unet_resnet18",
+  "model_path": "C:\\Users\\User\\projects\\pet-segmentation\\models\\study\\unet_resnet18_160_fp32.onnx",
+  "split": "test",
+  "n_images": 3669,
+  "input_size": 160,
+  "fg_iou": 0.8041336423155989,
+  "bg_iou": 0.8681097724360414,
+  "miou": 0.8361217073758201,
+  "dice": 0.8914346736348161,
+  "pixel_acc": 0.9144391241979208,
+  "mean_image_iou": 0.7823909684516097,
+  "median_image_iou": 0.8017496205160981,
+  "images_iou_below_0.5": 96,
+  "latency_ms_mean": 17.714749563064522,
+  "by_species": {
+    "cat": 0.7970889779586611,
+    "dog": 0.8078928316504831
+  },
+  "by_size": {
+    "tiny (<15%)": 0.6078179749044413,
+    "small (15-35%)": 0.7442971172057987,
+    "medium (35-60%)": 0.800617709885702,
+    "large (>60%)": 0.8618986626198135
+  },
+  "worst_breeds": {
+    "miniature_pinscher": 0.685152472031637,
+    "Bengal": 0.7213041402722503,
+    "chihuahua": 0.7273209013043581,
+    "Egyptian_Mau": 0.7338712757349446,
+    "german_shorthaired": 0.7394325701016156
+  },
+  "best_breeds": {
+    "havanese": 0.8205106505886012,
+    "newfoundland": 0.8228574677209266,
+    "keeshond": 0.8249931890770663,
+    "British_Shorthair": 0.8258975794358824,
+    "samoyed": 0.8352317982483091
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "name": "deeplabv3_mbv3",
+  "model": "deeplabv3_mbv3",
+  "params": 11020594,
+  "best_val": {
+    "fg_iou": 0.8304122778549647,
+    "bg_iou": 0.8887350560862842,
+    "miou": 0.8595736669706244,
+    "dice": 0.9073499865594363,
+    "pixel_acc": 0.9279757367886179,
+    "epoch": 9
+  },
+  "config": {
+    "model": "deeplabv3_mbv3",
+    "pretrained": true,
+    "size": 160,
+    "epochs": 10,
+    "batch_size": 16,
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "loss": "ce_dice",
+    "augment": "standard",
+    "border": "ignore",
+    "num_workers": 4,
+    "threads": 8,
+    "seed": 42,
+    "limit": null,
+    "train_fraction": 1.0,
+    "name": "deeplabv3_mbv3"
+  },
+  "train_minutes": 41.54664052327474,
+  "device": "cpu"
+}

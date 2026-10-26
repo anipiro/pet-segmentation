@@ -1,3 +1,5 @@
 # Ablation: plain cross-entropy instead of CE + Dice
 model: lraspp_mbv3
 loss: ce
+epochs: 6
+train_fraction: 0.5

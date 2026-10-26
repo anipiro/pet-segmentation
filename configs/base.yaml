@@ -9,7 +9,8 @@ weight_decay: 0.0001
 loss: ce_dice        # ce | ce_dice
 augment: standard    # standard | none
 border: ignore       # ignore | foreground  (how trimap border pixels are labelled for training)
-num_workers: 4
+num_workers: 2        # data-loading processes (2 keeps RAM use low on a 16 GB laptop)
 threads: 8           # CPU threads for torch when no GPU
 seed: 42
 limit: null          # cap images per split, for smoke tests
+train_fraction: 1.0  # use a random fraction of the training images
